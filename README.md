@@ -5,18 +5,16 @@
 
 ---
 
-Note - This is a collection of quickfixes/ commands that helped me solve issues, mostly intended for personal use but feel free to refer the steps, may help you troubleshoot some problems! (a few shortcuts and useful aliases that i use too!)
+Note - This is a collection of quickfixes/ commands that helped me solve issues on Linux ( Ubuntu in my machine ), mostly intended for personal use but feel free to refer the steps, may help you troubleshoot some problems! (a few shortcuts and useful aliases that i use too!)
 
 Specs - 
 
 ![CPU](https://img.shields.io/badge/Intel-Core_i5_9th-0071C5?style=for-the-badge&logo=intel&logoColor=white)
 ![GPU](https://img.shields.io/badge/NVIDIA-GTX1660ti-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
 
-
-
 ---
 
-## My aliases: 
+## My aliases:
 
 ```bash
 # mylog => for quick SQL login
@@ -29,7 +27,6 @@ sudo modprobe uvcvideo
 
 # netstart => restart network manager to quickfix wifi/networking issue. See flush DNS Cache for another network troubleshooting step 
 sudo service network-manager restart 
-
 ```
 
 ## Uninstall Apps 📲
@@ -49,6 +46,7 @@ sudo apt-get --purge remove #Name
 
 In /etc/X11/xorg.conf.d/20-nvidia.conf Insert the following Lines as a root user
 Read the above arch wiki article for details and steps!
+
 ```
 Section "Device"
         Identifier "Nvidia Card"
@@ -87,6 +85,7 @@ alias spicetify="/home/tanmay/spicetify-cli/spicetify" #already done in my syste
 spicetify config color_scheme horizon
 spicetify apply
 ```
+
 ## Flush DNS Cache
 
 ```bash

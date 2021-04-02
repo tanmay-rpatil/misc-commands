@@ -65,6 +65,12 @@ Section "Screen"
 EndSection
 ```
 
+###### This is the startup command that I added instead of the above fix
+
+```bash
+nvidia-settings --assign CurrentMetaMode="DPY-0: nvidia-auto-select +0+0 {ForceCompositionPipeline=On}"
+```
+
 ## Ram Speed Check
 
 ```bash

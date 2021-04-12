@@ -81,7 +81,7 @@ sudo lshw -C memory
 
 ## Spicetify Setup 🎶
 
-Few steps to setup spicetify on the flatak
+Few steps to setup spicetify on the flatpak version of the spotify client
 
 ```bash
 sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/current/active/files/extra/share/spotify

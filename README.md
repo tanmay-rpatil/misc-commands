@@ -5,7 +5,7 @@
 
 ---
 
-Note - This is a collection of quickfixes/ commands that helped me solve issues on Linux ( Ubuntu in my machine ), mostly intended for personal use but feel free to refer the steps, may help you troubleshoot some problems! (a few shortcuts and useful aliases that i use too!)
+Note - This is a collection of quick-fixesand/ commands that helped me solve issues on Linux ( Ubuntu on my machine ), mostly intended for personal use but feel free to refer the steps, may help you troubleshoot some problems! (a few shortcuts, useful aliases and customization tools that I use too!)
 
 Specs - 
 
@@ -81,21 +81,27 @@ sudo lshw -C memory
 
 ## Spicetify Setup 🎶
 
-Few steps to setup spicetify on the flatpak version of the spotify client
+Few steps to setup Spicetify on the Flatpak version of the Spotify client. For documentation check [GitHub - khanhas/spicetify-cli: Commandline tool to customize Spotify client. Supports Windows, MacOS and Linux.](https://github.com/khanhas/spicetify-cli)
 
 ```bash
 sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/current/active/files/extra/share/spotify
 sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/current/active/files/extra/share/spotify/Apps -R
 alias spicetify="/home/tanmay/spicetify-cli/spicetify" #already done in my system
 # replace "tanmay" in the path above with your user name. Make sure it is the path to the spicetify executable in your system
-spicetify config color_scheme horizon
+# taking the example of a popular Dribbblish Theme.
+cd "$(dirname "$(spicetify -c)")/Themes/DribbblishDynamic"
+mkdir -p ../../Extensions
+cp dribbblish-dynamic.js ../../Extensions/.
+spicetify config extensions dribbblish-dynamic.js
+spicetify config current_theme DribbblishDynamic color_scheme dark
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 spicetify apply
 ```
 
 ## Flush DNS Cache
 
 ```bash
-# check if systemcl is the one 
+# check if systemcl is used on your system 
 sudo systemctl is-active systemd-resolved.service
 # if active: yes in case of ubuntu
 sudo systemd-resolve --flush-caches

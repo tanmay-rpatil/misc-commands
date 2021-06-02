@@ -17,16 +17,27 @@ Specs -
 ## My aliases:
 
 ```bash
-# mylog => for quick SQL login
-sudo mysql -h localhost -p 
+#restart netowrk => restart network manager to quickfix wifi/networking issue. See flush DNS Cache for another network troubleshooting step 
+alias netstart='sudo service network-manager restart'
 
-# nocam => unload cam module from the kernel
-sudo modprobe -r uvcvideo
-# note to re-enable the module type 
-sudo modprobe uvcvideo
+#turn off the cam => unload cam module from the kernel
+alias nocam='sudo modprobe -r uvcvideo'
 
-# netstart => restart network manager to quickfix wifi/networking issue. See flush DNS Cache for another network troubleshooting step 
-sudo service network-manager restart 
+#turn on the cam
+alias camon='sudo modprobe uvcvideo'
+
+#for scpicetify setup
+alias spicetify="/home/tanmay/spicetify-cli/spicetify"
+
+#mysql login => for quick SQL login
+alias mylog="sudo mysql -h localhost -p"
+
+#launch flatpak version of neovim
+alias nvim="flatpak run io.neovim.nvim"
+
+#python venv activate
+alias activatepyenv="source ./env/bin/activate"
+
 ```
 
 ## Uninstall Apps 📲

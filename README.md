@@ -40,6 +40,41 @@ alias activatepyenv="source ./env/bin/activate"
 
 ```
 
+## Clean up older verions of snaps 
+
+Source [ItsFoss-Free-Up-Space](https://itsfoss.com/free-up-space-ubuntu-linux/)
+
+Snaps store previous versions of the apps, which may take up loads of storage space.
+Check amount of space taken up by snaps
+
+``` bash
+du -h /var/lib/snapd/snaps  
+```
+
+
+- Save the following script, ( source the above article ) as a shell script file ( say clean.sh )
+
+``` bash
+#!/bin/bash
+# Removes old revisions of snaps
+# CLOSE ALL SNAPS BEFORE RUNNING THIS
+set -eu
+snap list --all | awk '/disabled/{print $1, $3}' |
+    while read snapname revision; do
+        snap remove "$snapname" --revision="$revision"
+    done
+```
+- Give the file execution permission, then execute it as superuser 
+
+``` bash
+
+chmod +x ./clean.sh #gave execute permission
+
+sudo ./clean.sh #execute it
+
+```
+
+
 ## Uninstall Apps 📲
 
 ```bash

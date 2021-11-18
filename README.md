@@ -71,7 +71,7 @@ chmod +x ./clean.sh #gave execute permission
 sudo ./clean.sh #execute it
 ```
 
-## Evince (Document vievwer fails to open links when chrome is the default browser) 📚
+## Evince (Document viewer) fails to open links when chrome is the default browser 📚
 
 The error message it dumps is along the lines of 
 

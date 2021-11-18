@@ -37,24 +37,22 @@ alias nvim="flatpak run io.neovim.nvim"
 
 #python venv activate
 alias activatepyenv="source ./env/bin/activate"
-
 ```
 
-## Clean up older verions of snaps 
+## Clean up older verions of snaps
 
 Source [ItsFoss-Free-Up-Space](https://itsfoss.com/free-up-space-ubuntu-linux/)
 
 Snaps store previous versions of the apps, which may take up loads of storage space.
 Check amount of space taken up by snaps
 
-``` bash
+```bash
 du -h /var/lib/snapd/snaps  
 ```
 
-
 - Save the following script, ( source the above article ) as a shell script file ( say clean.sh )
 
-``` bash
+```bash
 #!/bin/bash
 # Removes old revisions of snaps
 # CLOSE ALL SNAPS BEFORE RUNNING THIS
@@ -64,16 +62,39 @@ snap list --all | awk '/disabled/{print $1, $3}' |
         snap remove "$snapname" --revision="$revision"
     done
 ```
+
 - Give the file execution permission, then execute it as superuser 
 
-``` bash
-
+```bash
 chmod +x ./clean.sh #gave execute permission
 
 sudo ./clean.sh #execute it
-
 ```
 
+## Evince (Document vievwer fails to open links when chrome is the default browser) 📚
+
+The error message it dumps is along the lines of 
+
+```bash
+    [11589:11589:1118/193800.293444:FATAL:double_fork_and_exec.cc(131)] execv /opt/google/chrome/chrome_crashpad_handler: Permission denied (13)
+```
+
+To fix it, we need to edit ```/etc/apparmor.d/abstractions/ubuntu-helpers``` as root
+
+```bash
+# can replace nano with the text editor of your choice, such as gedit or vim
+sudo nano /etc/apparmor.d/abstractions/ubuntu-helpers 
+```
+
+inside profile_sanitized_helper{} insert the following line:
+
+```   /opt/google/chrome/chrome_crashpad_handler Pixr, ```
+
+```bash
+# reload
+cd /etc/apparmor.d
+sudo apparmour_parser -r usr.bin.evince
+```
 
 ## Uninstall Apps 📲
 
